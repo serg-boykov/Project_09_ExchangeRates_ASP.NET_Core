@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CurrencyApp.Controllers
 {
@@ -24,12 +21,12 @@ namespace CurrencyApp.Controllers
 
         public IActionResult Index()
         {
-            // Извлекаем данные о котировках валют из оперативной памяти сервера.
+            // We extract data on currency quotes from the server's RAM.
             if (!_memoryCache.TryGetValue("key_currency", out CurrencyConverter model))
             {
-                throw new Exception("Oшибка получения данных");
+                throw new Exception("Data retrieval error");
             }
-            
+
             return View(model);
         }
 
