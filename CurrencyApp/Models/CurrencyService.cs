@@ -58,8 +58,8 @@ namespace CurrencyApp.Models
                         .FirstOrDefault(x => x.Element("NumCode").Value == "978")
                         .Elements("Value").FirstOrDefault().Value),
 
-                        UAH = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
-                        .FirstOrDefault(x => x.Element("NumCode").Value == "980")
+                        KZT = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
+                        .FirstOrDefault(x => x.Element("NumCode").Value == "398")
                         .Elements("Value").FirstOrDefault().Value)
                     };
 

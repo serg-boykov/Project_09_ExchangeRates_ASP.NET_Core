@@ -15,6 +15,7 @@
     </div>
 
     <div>
-        @($"Курс гривны: {Model.UAH / 10}, Цена в гривнах: {Decimal.Round(Model.ConvertToUAH(priceRUB), 2)}")
+        @*Nominal for KZT = 100 (According to the Central Bank of Russia)*@
+        @($"Курс тенге: {Model.KZT / 100}, Цена в тенге: {Decimal.Round(Model.ConvertToKZT(priceRUB), 2)}")
     </div>
 </div>

@@ -8,8 +8,8 @@
         public decimal EUR { get; set; }
         public decimal ConvertToEUR(decimal priceRUB) => priceRUB / EUR;
 
-        // Nominal for UAH = 10 (According to the Central Bank of Russia)
-        public decimal UAH { get; set; }
-        public decimal ConvertToUAH(decimal priceRUB) => priceRUB / (UAH / 10);
+        // Nominal for KZT = 100 (According to the Central Bank of Russia)
+        public decimal KZT { get; set; }
+        public decimal ConvertToKZT(decimal priceRUB) => priceRUB / (KZT / 100);
     }
 }
