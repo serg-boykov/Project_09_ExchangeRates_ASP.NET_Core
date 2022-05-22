@@ -21,13 +21,22 @@ namespace CurrencyApp.Controllers
 
         public IActionResult Index()
         {
-            // We extract data on currency quotes from the server's RAM.
-            if (!_memoryCache.TryGetValue("key_currency", out CurrencyConverter model))
+            try
             {
-                throw new Exception("Data retrieval error");
+                // We extract data on currency quotes from the server's RAM.
+                if (!_memoryCache.TryGetValue("key_currency", out CurrencyConverter model))
+                {
+                    throw new Exception("Data retrieval error");
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
             }
 
-            return View(model);
+            return View();
         }
 
         public IActionResult Privacy()

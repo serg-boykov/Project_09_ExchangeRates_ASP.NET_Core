@@ -46,21 +46,22 @@ namespace CurrencyApp.Models
                     // immediately pick up the file from a remote server.
                     XDocument xml = XDocument.Load("https://www.cbr.ru/scripts/XML_daily.asp");
 
-                    CurrencyConverter converter = new CurrencyConverter();
-
-                    // Then we parse the file and find the currencies we need by their ID code,
-                    // and fill in the model class:
-                    converter.USD = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
+                    CurrencyConverter converter = new()
+                    {
+                        // Then we parse the file and find the currencies we need by their ID code,
+                        // and fill in the model class:
+                        USD = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
                         .FirstOrDefault(x => x.Element("NumCode").Value == "840")
-                        .Elements("Value").FirstOrDefault().Value);
+                        .Elements("Value").FirstOrDefault().Value),
 
-                    converter.EUR = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
+                        EUR = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
                         .FirstOrDefault(x => x.Element("NumCode").Value == "978")
-                        .Elements("Value").FirstOrDefault().Value);
+                        .Elements("Value").FirstOrDefault().Value),
 
-                    converter.UAH = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
+                        UAH = Convert.ToDecimal(xml.Elements("ValCurs").Elements("Valute")
                         .FirstOrDefault(x => x.Element("NumCode").Value == "980")
-                        .Elements("Value").FirstOrDefault().Value);
+                        .Elements("Value").FirstOrDefault().Value)
+                    };
 
                     // We use RAM on the server to have constant access to data.
                     _memoryCache.Set("key_currency", converter, TimeSpan.FromMinutes(1440));
