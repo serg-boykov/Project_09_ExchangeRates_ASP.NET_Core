@@ -7,15 +7,15 @@
     Цена товара в российских рублях: @priceRUB руб.
 
     <div>
-        @($"Курс доллара: {Model.USD}, Цена в долларах: {Decimal.Round(Model.ConvertToUSD(priceRUB), 2)}")
+        @($"Курс доллара: {Model.USD}, Цена в долларах: {Model.ConvertToUSD(priceRUB)}")
     </div>
 
     <div>
-        @($"Курс евро: {Model.EUR}, Цена в евро: {Decimal.Round(Model.ConvertToEUR(priceRUB), 2)}")
+        @($"Курс евро: {Model.EUR}, Цена в евро: {Model.ConvertToEUR(priceRUB)}")
     </div>
 
     <div>
         @*Nominal for KZT = 100 (According to the Central Bank of Russia)*@
-        @($"Курс тенге: {Model.KZT / 100}, Цена в тенге: {Decimal.Round(Model.ConvertToKZT(priceRUB), 2)}")
+        @($"Курс тенге: {Model.KZT / 100}, Цена в тенге: {Model.ConvertToKZT(priceRUB)}")
     </div>
 </div>
